@@ -1,0 +1,17 @@
+[
+    {
+        "name": "rice type",
+        "weight": 25,
+        "price": 30
+    },
+    {
+        "name": "Wheat type",
+        "weight": 55,
+        "price": 60
+    },
+    {
+        "name": "pulses type",
+        "weight": 35,
+        "price": 20
+    }
+]

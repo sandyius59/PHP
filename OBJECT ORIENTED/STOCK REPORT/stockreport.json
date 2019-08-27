@@ -1,0 +1,14 @@
+{
+    "stock": [
+        {
+            "ShareName": "sandy",
+            "shareNumber": 123456,
+            "sharePrice": 2000
+        },
+        {
+            "ShareName": "deepak",
+            "shareNumber": 123,
+            "sharePrice": 201
+        }
+    ]
+}

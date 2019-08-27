@@ -1,0 +1,22 @@
+[
+    {
+        "name": "apple",
+        "price": "255",
+        "quantity": "12"
+    },
+    {
+        "name": "nokia",
+        "price": "1000",
+        "quantity": "10"
+    },
+    {
+        "name": "vivo",
+        "price": "500",
+        "quantity": "20"
+    },
+    {
+        "name": "oopo",
+        "price": "600",
+        "quantity": "15"
+    }
+]
