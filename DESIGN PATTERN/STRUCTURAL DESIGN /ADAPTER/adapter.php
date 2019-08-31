@@ -47,10 +47,15 @@ class BookAdapter
     }
 }
 // Usage
-$book = new SimpleBook("Gamma, Helm, Johnson, and Vlissides", "Design Patterns");
-$bookAdapter = new BookAdapter($book);
-echo 'Author and Title: ' . $bookAdapter->getAuthorAndTitle();
+try
+{
+    $book = new SimpleBook("Gamma, Helm, Johnson, and Vlissides", "Design Patterns");
+    $bookAdapter = new BookAdapter($book);
+    echo 'Author and Title: ' . $bookAdapter->getAuthorAndTitle();
 // function echo $line_in)
-// {
-//   echo $line_in."<br/>";
-// }
+    // {
+    //   echo $line_in."<br/>";
+    // }
+} catch (Exception $e) {
+    echo $e;
+}

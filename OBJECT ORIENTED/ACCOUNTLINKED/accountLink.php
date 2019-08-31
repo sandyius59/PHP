@@ -33,39 +33,58 @@ class Linked
 
     public function buy($name, $price, $quantity)
     {
-        $newnode = new node($name, $price, $quantity);
-        if ($this->head == null) {
-            $this->head = $newnode;
-        } else {
-            $temp = $this->head;
-            while ($temp->next) {
-                $tamp = $temp->next;
+        try {
+            $newnode = new node($name, $price, $quantity);
+            if ($this->head == null) {
+                $this->head = $newnode;
+            } else {
+                $temp = $this->head;
+                while ($temp->next) {
+                    $tamp = $temp->next;
+                }
+                $tamp->next = $newnode;
             }
-            $tamp->next = $newnode;
+        } catch (Exception $e) {
+            echo $e;
         }
     }
+    /**
+     * @desc it's function for selling product
+     * @param $name it's passing name value
+     * @param  $price it's passing price value
+     * @param $quantity it's passing quantity value
+     * @return null
+     */
     public function sell($name, $price, $quantity)
     {
-        $temp = $this->head;
-        if ($this->head->data == $data) {
-            $this->head = $temp->next;
+        try {
+            $temp = $this->head;
+            if ($this->head->data == $data) {
+                $this->head = $temp->next;
+            }
+            while ($temp->data != $data) {
+                $temppre = $temp;
+                $temp = $temp->next;
+            }
+            $temppre->next = $temp->next;
+        } catch (Exception $e) {
+            echo $e;
         }
-        while ($temp->data != $data) {
-            $temppre = $temp;
-            $temp = $temp->next;
-        }
-        $temppre->next = $temp->next;
     }
-
+//it's function for display all data
     public function disp()
     {
-        $temp = $this->head;
-        $arr = [];
-        while ($temp) {
-            array_push($arr, $temp->data);
-            $temp = $temp->next;
+        try {
+            $temp = $this->head;
+            $arr = [];
+            while ($temp) {
+                array_push($arr, $temp->data);
+                $temp = $temp->next;
+            }
+            return $arr;
+        } catch (Exception $e) {
+            echo $e;
         }
-        return $arr;
     }
 
     // public function read()
@@ -79,18 +98,22 @@ class Linked
     // }
 
 }
-$obj = new Linked();
-$content = json_decode(file_get_contents("readL.json"), true);
+try {
+    $obj = new Linked();
+    $content = json_decode(file_get_contents("readL.json"), true);
 //$obj->read();
-//$obj->buy("sandy", "24", "45");
-//$obj->save();
+    //$obj->buy("sandy", "24", "45");
+    //$obj->save();
 
-foreach ($content as $val) {
-    $obj->buy($val['name'], $val['price'], $val['quantity']);
+    foreach ($content as $val) {
+        $obj->buy($val['name'], $val['price'], $val['quantity']);
+    }
+
+    $obj->buy("sand", "14", "20");
+    var_dump($obj->disp());
+    file_put_contents("readL.json", json_encode($obj->disp()));
+} catch (Exception $e) {
+    echo $e;
 }
-
-$obj->buy("sand", "14", "20");
-var_dump($obj->disp());
-file_put_contents("readL.json", json_encode($obj->disp()));
 
 //$obj->save();

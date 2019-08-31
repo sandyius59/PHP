@@ -1,5 +1,5 @@
 <?php
-require_once 'TerminalExec.php';
+require_once '/home/admin1/sandy/PHP/DESIGN PATTERN/STRUCTURAL DESIGN /PROXY/TerminalExec.php';
 //require '';
 
 class pattern

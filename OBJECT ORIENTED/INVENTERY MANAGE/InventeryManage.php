@@ -34,21 +34,25 @@ class Inventery
  */
 function arrayobject()
 {
-    $name = ["Rice", "Wheat", "Pulse"];
-    $arrObj = [];
-    for ($i = 0; $i < 3; $i++) {
-        echo "Enter price of " . $name[$i] . " ";
-        $weight = trim(fgets(STDIN));
+    try {
+        $name = ["Rice", "Wheat", "Pulse"];
+        $arrObj = [];
+        for ($i = 0; $i < 3; $i++) {
+            echo "Enter price of " . $name[$i] . " ";
+            $weight = trim(fgets(STDIN));
 
-        echo "Enter weight of " . $name[$i] . "in KG";
-        $price = trim(fgets(STDIN));
+            echo "Enter weight of " . $name[$i] . "in KG";
+            $price = trim(fgets(STDIN));
 
-        echo "\n\n";
+            echo "\n\n";
 
-        $arrObj[$i] = new Inventery($name[$i], $weight, $price);
+            $arrObj[$i] = new Inventery($name[$i], $weight, $price);
+        }
+
+        return $arrObj;
+    } catch (Exception $e) {
+        echo $e;
     }
-
-    return $arrObj;
 }
 /**
  * function to put attribute in json file
@@ -60,22 +64,29 @@ function jsonPut($arr, $file)
 
     file_put_contents($file, $json);
 }
+// get file from json file
 function getjson($file)
 {
     $contents = file_get_contents($file);
     $arr = json_decode($contents, true);
     return $arr;
 }
+// display the all values
 function printValue($arr)
 {
-    $price = 0;
-    for ($i = 0; $i < count($arr); $i++) {
-        $tt = $arr[$i]['weight'] * $arr[$i]['price'];
-        echo "price for " . $arr[$i]['name'] . "is :" . $tt . "rs\n";
-        $price += $tt;
+    try {
+        $price = 0;
+        for ($i = 0; $i < count($arr); $i++) {
+            $tt = $arr[$i]['weight'] * $arr[$i]['price'];
+            echo "price for " . $arr[$i]['name'] . "is :" . $tt . "rs\n";
+            $price += $tt;
+        }
+        echo "total price is " . $price . "rs\n";
+    } catch (Exception $e) {
+        echo $e;
     }
-    echo "total price is " . $price . "rs\n";
 }
+// run function for call function
 function run()
 {
     $file = "manage.json";

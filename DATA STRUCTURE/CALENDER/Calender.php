@@ -76,6 +76,7 @@ function calculateEnd($month, $year)
         return 30;
     }
 }
+
 /**
  * Function to print the 2d array as a calender
  *
@@ -84,20 +85,24 @@ function calculateEnd($month, $year)
 function printCal($arr)
 {
     echo "Sun   Mon   Tue   Wed   Thu   Fri   Sat\n";
-    for ($i = 0; $i < 6; $i++) {
-        for ($j = 0; $j < 7; $j++) {
-            if ($arr[$i][$j] == -10 || $arr[$i][$j] > 31) // ||=>or
-            {
-                echo "      ";
-            } else {
-                if ($arr[$i][$j] < 10) {
-                    echo $arr[$i][$j] . "     ";
+    try {
+        for ($i = 0; $i < 6; $i++) {
+            for ($j = 0; $j < 7; $j++) {
+                if ($arr[$i][$j] == -10 || $arr[$i][$j] > 31) // ||=>or
+                {
+                    echo "      ";
                 } else {
-                    echo $arr[$i][$j] . "    ";
+                    if ($arr[$i][$j] < 10) {
+                        echo $arr[$i][$j] . "     ";
+                    } else {
+                        echo $arr[$i][$j] . "    ";
+                    }
                 }
             }
+            echo "\n";
         }
-        echo "\n";
+    } catch (Exception $e) {
+        echo $e;
     }
 }
 /**
@@ -109,30 +114,38 @@ function printCal($arr)
  */
 function arrayFill($start, $arr, $end)
 {
-    $count = 1;
-    for ($i = $start; $i < 7; $i++) {
-        $arr[0][$i] = $count++;
-    }
-    for ($i = 1; $i < 6; $i++) {
-        for ($j = 0; $j < 7 && $count <= $end; $j++) {
-            $arr[$i][$j] = $count++;
+    try {
+        $count = 1;
+        for ($i = $start; $i < 7; $i++) {
+            $arr[0][$i] = $count++;
         }
+        for ($i = 1; $i < 6; $i++) {
+            for ($j = 0; $j < 7 && $count <= $end; $j++) {
+                $arr[$i][$j] = $count++;
+            }
+        }
+        return $arr;
+    } catch (Exception $e) {
+        echo $e;
     }
-    return $arr;
 }
 /**
  * initialing the 2d arra with default values
  */
 function initArray()
 {
-    $arr = [];
-    for ($i = 0; $i < 6; $i++) {
-        $aa = array();
-        for ($j = 0; $j < 7; $j++) {
-            $aa[$j] = -10;
+    try {
+        $arr = [];
+        for ($i = 0; $i < 6; $i++) {
+            $aa = array();
+            for ($j = 0; $j < 7; $j++) {
+                $aa[$j] = -10;
+            }
+            array_push($arr, $aa);
         }
-        array_push($arr, $aa);
+        return $arr;
+    } catch (Exception $e) {
+        echo $e;
     }
-    return $arr;
 }
 calender();

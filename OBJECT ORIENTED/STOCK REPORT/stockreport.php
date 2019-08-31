@@ -22,19 +22,25 @@ require "/home/admin1/sandy/PHP/OBJECT ORIENTED/STOCK REPORT/stockBL.php";
 function getStockData($n)
 {
     $stock['stock'] = array();
-    for ($i = 0; $i < $n; $i++) {
-        $tempArr = array('ShareName' => "", 'shareNumber' => 0, 'sharePrice' => 0);
-        echo "enter Share Name \n";
-        $name = trim(fgets(STDIN));
-        $tempArr['ShareName'] = $name;
-        echo "enter Number of Share \n";
-        $tempArr['shareNumber'] = Utility::getInt();
-        echo "enter Share Price\n";
-        $tempArr['sharePrice'] = Utility::getInt();
-        array_push($stock['stock'], $tempArr);
+    try {
+        for ($i = 0; $i < $n; $i++) {
+            $tempArr = array('ShareName' => "", 'shareNumber' => 0, 'sharePrice' => 0);
+            echo "enter Share Name \n";
+            $name = trim(fgets(STDIN));
+            $tempArr['ShareName'] = $name;
+            echo "enter Number of Share \n";
+            $tempArr['shareNumber'] = Utility::getInt();
+            echo "enter Share Price\n";
+            $tempArr['sharePrice'] = Utility::getInt();
+            array_push($stock['stock'], $tempArr);
+        }
+        return $stock;
+    } catch (Exception $e) {
+        echo $e;
     }
-    return $stock;
 }
+
+// to edit details
 function update()
 {
     echo "<<number of share u want to add>>\n";
@@ -45,10 +51,12 @@ function update()
     }
     return $toUpdate;
 }
+//to wrint in json file
 function write($arr)
 {
     Utility::writeFl(json_encode($arr), "stockreport.json");
 }
+// to display
 function showRp()
 {
     $data = json_decode(file_get_contents("stockreport.json"), true);

@@ -1,6 +1,11 @@
 <?php
 class utility
 {
+    /**
+     * @desc readInt function use for take a input in standred Input
+     * @param
+     * @return $i
+     */
     public static function readInt()
     {
         fscanf(STDIN, "%s", $i);
@@ -11,7 +16,11 @@ class utility
         }
         return $i;
     }
-
+    /**
+     * @desc to use primeNumberArr for take prime number values
+     * @param $n it's passing value of n
+     * @return $primeArr it's return a array values
+     */
     public static function primeNumberArr($n)
     {
         $prime = 2;

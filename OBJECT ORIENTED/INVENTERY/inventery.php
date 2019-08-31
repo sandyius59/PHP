@@ -25,14 +25,18 @@ function readJson($file)
  */
 function printJson($jsonData)
 {
-    $str = array('Rice', 'Pulses');
-    //taking every object in json array and printing
-    foreach ($jsonData as $groc) {
-        $name = $groc['name'];
-        $weight = $groc['weight'];
-        $price = $groc['price'];
-        echo "Details of inventory\n";
-        printf('Name : %s ' . PHP_EOL . 'weight : %d' . PHP_EOL . 'price : %d ' . PHP_EOL . 'value : %d  ' . PHP_EOL . PHP_EOL, $name, $weight, $price, $weight * $price);
+    try {
+        $str = array('Rice', 'Pulses');
+        //taking every object in json array and printing
+        foreach ($jsonData as $groc) {
+            $name = $groc['name'];
+            $weight = $groc['weight'];
+            $price = $groc['price'];
+            echo "Details of inventory\n";
+            printf('Name : %s ' . PHP_EOL . 'weight : %d' . PHP_EOL . 'price : %d ' . PHP_EOL . 'value : %d  ' . PHP_EOL . PHP_EOL, $name, $weight, $price, $weight * $price);
+        }
+    } catch (Exception $e) {
+        echo $e;
     }
 }
 $file = "/home/admin1/sandy/PHP/OBJECT ORIENTED/INVENTERY 1/inventery.json";

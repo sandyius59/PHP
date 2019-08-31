@@ -26,23 +26,27 @@ $primeArr = utility::primeNumberArr($num);
 $twoDPrime = array();
 $range = 100;
 $k = 0;
-for ($i = 0; $i < 10; $i++) {
-    for ($j = 0; $j < 100; $j++) {
-        /**travserse till reaches condition   */
-        if ($k == sizeof($primeArr) || $primeArr[$k] > $range) {
-            break;
+try {
+    for ($i = 0; $i < 10; $i++) {
+        for ($j = 0; $j < 100; $j++) {
+            /**travserse till reaches condition   */
+            if ($k == sizeof($primeArr) || $primeArr[$k] > $range) {
+                break;
+            }
+            $twoDPrime[$i][$j] = $primeArr[$k++];
         }
-        $twoDPrime[$i][$j] = $primeArr[$k++];
+        /**increment by 100 for every loop */
+        $range += 100;
     }
-    /**increment by 100 for every loop */
-    $range += 100;
-}
-print_r($twoDPrime);
+    print_r($twoDPrime);
 /**printing twoDaary */
-for ($i = 0; $i < sizeof($twoDPrime); $i++) {
-    for ($j = 0; $j < sizeof($twoDPrime[$i]); $j++) {
-        echo $twoDPrime[$i][$j] . " ";
+    for ($i = 0; $i < sizeof($twoDPrime); $i++) {
+        for ($j = 0; $j < sizeof($twoDPrime[$i]); $j++) {
+            echo $twoDPrime[$i][$j] . " ";
+        }
+        echo "\n";
     }
-    echo "\n";
+} catch (Exception $e) {
+    echo $e;
 }
 // print_r($twoDPrime);

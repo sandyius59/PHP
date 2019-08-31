@@ -18,5 +18,16 @@
         "name": "oopo",
         "price": "600",
         "quantity": "15"
+    },
+    {
+        "name": [
+            "sandy"
+        ],
+        "price": [
+            "123"
+        ],
+        "quantity": [
+            "5"
+        ]
     }
 ]

@@ -40,22 +40,26 @@ $counter = function () {
     echo "Enter total people in queue ";
     $people = trim(fgets(STDIN));
     //looping to get input in queue and checking for correct input
-    for ($i = 0; $i < $people; $i++) {
-        echo "Enter 1 to deposit or 2 to withdraw ";
-        $n = Utility::getInt();
-        //if else condition to check for correct input
-        if ($n === 1) {
-            echo "Enter amount ";
-            $amount = trim(fgets(STDIN));
-            $q->enqueue($amount);
-        } else if ($n === 2) {
-            echo "Enter amount ";
-            $amount = trim(fgets(STDIN));
-            $q->enqueue($amount * -1);
-        } else {
-            echo "enter correct input";
-            $i--;
+    try {
+        for ($i = 0; $i < $people; $i++) {
+            echo "Enter 1 to deposit or 2 to withdraw ";
+            $n = Utility::getInt();
+            //if else condition to check for correct input
+            if ($n === 1) {
+                echo "Enter amount ";
+                $amount = trim(fgets(STDIN));
+                $q->enqueue($amount);
+            } else if ($n === 2) {
+                echo "Enter amount ";
+                $amount = trim(fgets(STDIN));
+                $q->enqueue($amount * -1);
+            } else {
+                echo "enter correct input";
+                $i--;
+            }
         }
+    } catch (Execution $e) {
+        echo $e;
     }
     //initializing empty array to store the values of deposits
     $withd = array(0, 0);

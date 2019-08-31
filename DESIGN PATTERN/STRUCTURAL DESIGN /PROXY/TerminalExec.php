@@ -1,7 +1,7 @@
 <?php
-require_once 'Terminal.php';
-require_once 'TerminalImp.php';
-require_once 'TerminalExec.php';
+require_once '/home/admin1/sandy/PHP/DESIGN PATTERN/STRUCTURAL DESIGN /PROXY/Terminal.php';
+require_once '/home/admin1/sandy/PHP/DESIGN PATTERN/STRUCTURAL DESIGN /PROXY/TerminalImp.php';
+require_once '/home/admin1/sandy/PHP/DESIGN PATTERN/STRUCTURAL DESIGN /PROXY/TerminalExec.php';
 class TerminalExec implements Terminal
 {
     public $isAdmin = false;

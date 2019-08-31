@@ -8,5 +8,25 @@
         "name": "deepak",
         "address": "mahabalipuram",
         "city": "siwan"
+    },
+    {
+        "name": [
+            "nesi"
+        ],
+        "address": [
+            "sarsar"
+        ],
+        "city": [
+            "siwan"
+        ]
+    },
+    {
+        "name": [
+            "sandeep"
+        ],
+        "address": [
+            "btm"
+        ],
+        "city": "siwan"
     }
 ]
